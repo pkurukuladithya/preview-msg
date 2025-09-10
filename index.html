@@ -2,29 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Message Preview</title>
-  <style>
-    body { font-family: Arial; text-align: center; margin-top: 100px; }
-    #msg { display: none; color: green; font-size: 20px; margin-top: 20px; }
-  </style>
+  <title>Secret Message Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h2>Login to View Message</h2>
-  <input type="text" id="username" placeholder="Username"><br><br>
-  <input type="password" id="password" placeholder="Password"><br><br>
-  <button onclick="checkLogin()">Login</button>
-  <p id="error" style="color:red;"></p>
-  <div id="msg">🎉 Secret Message: Hello Praveena!</div>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
+
+  <!-- Card -->
+  <div class="bg-white/90 backdrop-blur-lg p-8 rounded-2xl shadow-2xl w-96 text-center transform transition duration-500 hover:scale-105">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">🔐 Login to View Message</h2>
+
+    <!-- Username -->
+    <input type="text" id="username" placeholder="Username"
+      class="w-full p-3 mb-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:outline-none transition" />
+
+    <!-- Password -->
+    <input type="password" id="password" placeholder="Password"
+      class="w-full p-3 mb-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:outline-none transition" />
+
+    <!-- Button -->
+    <button onclick="checkLogin()"
+      class="w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white py-3 rounded-lg font-semibold shadow-md hover:shadow-xl hover:scale-105 transition">
+      Login
+    </button>
+
+    <!-- Error -->
+    <p id="error" class="text-red-600 mt-3 font-medium"></p>
+
+    <!-- Secret Message -->
+    <div id="msg" class="hidden mt-6 p-4 rounded-xl bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold text-lg shadow-lg animate-bounce">
+      🎉 Secret Message: Hello Praveena, you found it!
+    </div>
+  </div>
 
   <script>
     function checkLogin() {
       const u = document.getElementById("username").value;
       const p = document.getElementById("password").value;
+
       if (u === "admin" && p === "1234") {
-        document.getElementById("msg").style.display = "block";
+        document.getElementById("msg").classList.remove("hidden");
         document.getElementById("error").innerText = "";
       } else {
-        document.getElementById("error").innerText = "Invalid credentials!";
+        document.getElementById("error").innerText = "❌ Invalid credentials!";
       }
     }
   </script>
