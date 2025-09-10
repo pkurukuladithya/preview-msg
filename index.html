@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Message Preview</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    #msg { display: none; color: green; font-size: 20px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>Login to View Message</h2>
+  <input type="text" id="username" placeholder="Username"><br><br>
+  <input type="password" id="password" placeholder="Password"><br><br>
+  <button onclick="checkLogin()">Login</button>
+  <p id="error" style="color:red;"></p>
+  <div id="msg">🎉 Secret Message: Hello Praveena!</div>
+
+  <script>
+    function checkLogin() {
+      const u = document.getElementById("username").value;
+      const p = document.getElementById("password").value;
+      if (u === "admin" && p === "1234") {
+        document.getElementById("msg").style.display = "block";
+        document.getElementById("error").innerText = "";
+      } else {
+        document.getElementById("error").innerText = "Invalid credentials!";
+      }
+    }
+  </script>
+</body>
+</html>
